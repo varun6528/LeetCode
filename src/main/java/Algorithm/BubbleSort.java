@@ -1,24 +1,26 @@
 package main.java.Algorithm;
 
-public class SelectionSort {
+
+public class BubbleSort {
+
     public void sort(int[] a) {
-        System.out.println("\nSelection Sort");
+        System.out.println("Bubble Sort");
         System.out.println("===================");
         sortArray(a);
     }
 
     private void sortArray(int[] a) {
         long startTime = System.currentTimeMillis();
-        for(int i=0; i<a.length -1; i++) {
-            int minIndex = i;
-            for(int j=i+1; j<a.length -1; j++) {
-                if (a[j] < a[minIndex]) {
-                    minIndex = j;
+        int n = a.length;
+        for(int i=0; i<n -1; i++) {
+            for(int j=0; j<n-i-1; j++) {
+                if (a[j] > a[j+1]) {
+                    int temp = a[j];
+                    a[j] = a[j+1];
+                    a[j+1] = temp;
                 }
             }
-            int temp = a[i];
-            a[i] = a[minIndex];
-            a[minIndex] = temp;
+
         }
         long endTime = System.currentTimeMillis();
         System.out.println("\nTime to sort" + "\n" + (endTime - startTime) + "ms");
